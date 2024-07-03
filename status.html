@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Dashboard</title>
+    <link rel="stylesheet" href="status.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Status Dashboard</h1>
+        </header>
+        <div class="status">
+            <h2>Task List</h2>
+            <ul id="taskList">
+                <!-- Task details will be appended here -->
+            </ul>
+        </div>
+        <a href="task_dashboard.html" class="add-task-btn">Add Task</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const task = JSON.parse(localStorage.getItem('newTask'));
+
+            if (task) {
+                const taskList = document.getElementById('taskList');
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>Company:</strong> ${task.companyName}<br>
+                    <strong>Target Name:</strong> ${task.targetName}<br>
+                    <strong>Target Domain:</strong> ${task.targetDomain}<br>
+                    <strong>Assigned Expert:</strong> ${task.expert}<br>
+                    <strong>Assigned Date:</strong> ${task.assignedDate}<br>
+                    <strong>Expected Date of Completion:</strong> ${task.expectedDate}<br>
+                `;
+                taskList.appendChild(li);
+
+                // Clear localStorage after displaying task
+                localStorage.removeItem('newTask');
+            }
+        });
+    </script>
+</body>
+</html>

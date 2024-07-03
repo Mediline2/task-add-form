@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="task_dashboared.css">
+</head>
+<body>
+    <div class="task-container">
+            <div class="task-add">
+              <h2>Add Task</h2>
+              <form id="taskForm">
+                <label for="companyName">Company</label>
+                <input type="text" id="companyName" value="" placeholder="Enter Company name" required>
+                <label for="targetName">Target Name</label>
+                <input type="text" id="targetName" value="" placeholder="Enter target Name" required>
+                <label for="targetDomain">Target Domain</label>
+                <input type="text" id="targetDomain" value="" placeholder="Enter target Domain" required>
+                <label for="expert">Assigned Expert</label>
+                <input type="text" id="expert" value="" placeholder="Enter Assigned Expert" required>
+                <label for="date">Assigned Date</label>
+                <input type="date" id ="date" value="" placeholder="Enter Assigned Date" required>
+                <lable for="exdate">Expected Date of Completion</lable>
+                <input type="date" id="exdate" value="" placeholder="Enter Expected Date of Completion" required>
+                <button type="submit">Add Task</button>
+              </form>
+            </div>
+          </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const taskForm = document.getElementById('taskForm');
+
+          taskForm.addEventListener('submit', (event) => {
+              event.preventDefault();
+              
+              const companyName = document.getElementById('companyName').value;
+              const targetName = document.getElementById('targetName').value;
+              const targetDomain = document.getElementById('targetDomain').value;
+              const expert = document.getElementById('expert').value;
+              const assignedDate = document.getElementById('date').value;
+              const expectedDate = document.getElementById('exdate').value;
+
+ // task object
+              const task = {
+                  companyName,
+                  targetName,
+                  targetDomain,
+                  expert,
+                  assignedDate,
+                  expectedDate
+              };
+
+              // Store task object in localStorage (or you can use a backend to store tasks)
+              localStorage.setItem('newTask', JSON.stringify(task));
+
+              // Redirect to status page
+              window.location.href = 'status.html';
+          });
+      });
+  </script>
+</body>
+</html>
